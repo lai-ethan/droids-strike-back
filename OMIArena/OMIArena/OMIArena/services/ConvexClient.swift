@@ -387,8 +387,8 @@ class ConvexClient: ObservableObject {
         }
         
         // Fallback to default development URL
-        // Use host machine IP for iOS simulator compatibility
-        return "http://127.0.0.1:3210"
+        // Use production deployment for reliable connection
+        return "https://efficient-deer-600.convex.cloud"
     }
     
     // MARK: - Error Handling
