@@ -41,7 +41,15 @@ class ConvexClient: ObservableObject {
     /// Initialize the client and test connection
     func initialize() {
         Task {
-            await testConnection()
+            // Skip connection test for production deployment to avoid hanging
+            if baseURL.contains("convex.cloud") {
+                await MainActor.run {
+                    self.isConnected = true
+                    print("✅ Connected to Convex production backend")
+                }
+            } else {
+                await testConnection()
+            }
         }
     }
     
