@@ -227,6 +227,79 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [OMI Developer Resources](https://github.com/omi-ai/omi)
 - [SwiftUI Tutorials](https://developer.apple.com/tutorials/swiftui/)
 
+## 🚧 Next Steps for Contributors
+
+This project was developed for a hackathon and has some incomplete areas that need attention:
+
+### High Priority Issues
+
+1. **Fix Convex API Integration**
+   - Player creation returns 400 errors - investigate payload format
+   - Update all API endpoints to use proper Convex function routing
+   - Test and verify backend deployment functionality
+
+2. **Complete Xcode Project Setup**
+   - Ensure all Swift files are properly added to Xcode project
+   - Fix any missing imports or dependencies
+   - Resolve build warnings and errors
+   - Test on physical iPhone device for Bluetooth functionality
+
+3. **Backend Deployment**
+   - Deploy latest Convex functions to production
+   - Verify all database indexes are properly configured
+   - Test API endpoints in production environment
+
+### Medium Priority Enhancements
+
+4. **Improve Error Handling**
+   - Add better error messages for Convex connection failures
+   - Implement retry logic for network requests
+   - Add user-friendly error dialogs
+
+5. **UI/UX Improvements**
+   - Fix SwiftUI layout constraints (see console warnings)
+   - Add loading states for async operations
+   - Improve onboarding flow for new users
+
+6. **Testing & Documentation**
+   - Add unit tests for Convex client functions
+   - Add UI tests for critical user flows
+   - Document API response formats and error codes
+
+### Low Priority Features
+
+7. **Game Enhancements**
+   - Implement different game modes (freeze tag, team tag)
+   - Add spectator mode for watching games
+   - Create leaderboards and persistent scoring
+
+8. **Platform Expansion**
+   - Add Android support using Kotlin Multiplatform
+   - Implement web dashboard for game management
+   - Add push notifications for game events
+
+### Technical Debt
+
+9. **Code Quality**
+   - Resolve TypeScript compilation warnings in Convex functions
+   - Add proper error logging and monitoring
+   - Implement proper state management patterns
+
+10. **Performance Optimization**
+    - Optimize Bluetooth connection handling
+    - Implement efficient data synchronization
+    - Add caching for frequently accessed data
+
+### Getting Started
+
+To contribute:
+1. Clone the repository and follow the setup instructions above
+2. Focus on high priority issues first
+3. Test changes on both simulator and physical device
+4. Submit pull requests with clear descriptions of changes
+
+**Note**: The project currently works in the simulator with mock data, but full functionality requires a physical iPhone device and properly deployed Convex backend.
+
 ---
 
 Built with ❤️ for hackathon development using Swift, SwiftUI, Convex, and CoreBluetooth.
