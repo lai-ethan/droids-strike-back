@@ -133,14 +133,14 @@ class OMIBluetoothManager: NSObject, ObservableObject {
         
         // Generate mock motion data
         mockDataTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
-            MainActor.run {
+            DispatchQueue.main.async {
                 self?.generateMockMotionData()
             }
         }
         
         // Generate mock RSSI data
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
-            MainActor.run {
+            DispatchQueue.main.async {
                 self?.generateMockRssiData()
             }
         }

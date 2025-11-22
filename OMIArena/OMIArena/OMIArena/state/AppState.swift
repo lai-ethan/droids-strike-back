@@ -293,7 +293,7 @@ class AppState: ObservableObject {
         // Set up subscription for game state
         Task {
             // Subscribe to game state changes
-            for await gameState in await convexClient.subscribeToGameState(roomId: room.id) {
+            for await gameState in convexClient.subscribeToGameState(roomId: room.id) {
                 await MainActor.run {
                     self.updateGameState(gameState)
                 }
