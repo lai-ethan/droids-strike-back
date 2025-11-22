@@ -76,11 +76,14 @@ class ConvexClient: ObservableObject {
     /// Create a new player or get existing one
     func createPlayer(name: String, deviceId: String? = nil) async throws -> PlayerModel {
         let payload: [String: Any] = [
-            "name": name,
-            "deviceId": deviceId as Any
+            "args": [
+                "name": name,
+                "deviceId": deviceId as Any
+            ]
         ]
         
-        let response = try await performRequest("POST", "/api/players", body: payload)
+        print("🔍 Sending payload: \(payload)")
+        let response = try await performRequest("POST", "/api/run/createPlayer", body: payload)
         
         guard let playerData = response as? [String: Any],
               let player = PlayerModel(from: playerData) else {
