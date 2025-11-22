@@ -16,6 +16,23 @@ struct LobbyView: View {
     @State private var showDeviceScanner: Bool = false
     
     var body: some View {
+        // Debug: Test basic rendering
+        VStack {
+            Text("LOBBY VIEW DEBUG")
+                .font(.largeTitle)
+                .foregroundColor(.purple)
+                .padding()
+            
+            Text("Current Player: \(appState.currentPlayer?.name ?? "NONE")")
+                .foregroundColor(.blue)
+            
+            Text("Current Room: \(appState.currentRoom?.name ?? "NONE")")
+                .foregroundColor(.green)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color(.systemBackground))
+        
+        /*
         NavigationView {
             VStack(spacing: 20) {
                 // Header
@@ -44,6 +61,7 @@ struct LobbyView: View {
                 DeviceScannerView()
             }
         }
+        */
     }
     
     // MARK: - Header View
