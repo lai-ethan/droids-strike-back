@@ -75,11 +75,17 @@ class ConvexClient: ObservableObject {
     
     /// Create a new player or get existing one
     func createPlayer(name: String, deviceId: String? = nil) async throws -> PlayerModel {
+        var args: [String: Any] = [
+            "name": name
+        ]
+        
+        // Only include deviceId if it's not nil
+        if let deviceId = deviceId {
+            args["deviceId"] = deviceId
+        }
+        
         let payload: [String: Any] = [
-            "args": [
-                "name": name,
-                "deviceId": deviceId as Any
-            ]
+            "args": args
         ]
         
         print("🔍 Sending payload: \(payload)")
