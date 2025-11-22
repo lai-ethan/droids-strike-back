@@ -18,21 +18,21 @@ struct LobbyView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
-                // Debug: Test conditional logic
+                // Player setup
                 if appState.currentPlayer == nil {
-                    Text("SHOWING PLAYER SETUP")
-                        .font(.largeTitle)
-                        .foregroundColor(.red)
-                        .padding()
+                    playerSetupView
                 } else {
-                    Text("PLAYER EXISTS - SHOW ROOM VIEW")
-                        .font(.largeTitle)
-                        .foregroundColor(.blue)
-                        .padding()
+                    // Room management
+                    if appState.currentRoom == nil {
+                        Text("ROOM JOIN VIEW")
+                            .foregroundColor(.blue)
+                    } else {
+                        Text("CURRENT ROOM VIEW")
+                            .foregroundColor(.green)
+                    }
                 }
                 
-                Text("Current Player: \(appState.currentPlayer?.name ?? "NONE")")
-                    .foregroundColor(.green)
+                Spacer()
             }
             .padding()
             .navigationTitle("OMI Arena")
