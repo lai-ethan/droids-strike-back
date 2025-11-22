@@ -271,9 +271,9 @@ struct DeviceDebugView: View {
                 .font(.headline)
                 .fontWeight(.bold)
             
-            if let errorMessage = appState.errorMessage {
+            if !appState.errorMessage.isEmpty {
                 VStack(alignment: .leading, spacing: 8) {
-                    Text(errorMessage)
+                    Text(appState.errorMessage)
                         .font(.caption)
                         .foregroundColor(.red)
                         .padding()

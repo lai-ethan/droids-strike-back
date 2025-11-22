@@ -30,7 +30,7 @@ class ConvexClient: ObservableObject {
             self.baseURL = url
         } else {
             // Load from .env.local or use default
-            self.baseURL = loadConvexURL()
+            self.baseURL = Self.loadConvexURL()
         }
         
         self.session = URLSession.shared
@@ -299,7 +299,7 @@ class ConvexClient: ObservableObject {
             
             // Clean up subscription when stream is cancelled
             continuation.onTermination = { _ in
-                Task { @MainActor in
+                DispatchQueue.main.async {
                     task.cancel()
                     self.subscriptions.removeValue(forKey: subscriptionKey)
                 }
@@ -332,7 +332,7 @@ class ConvexClient: ObservableObject {
             subscriptions[subscriptionKey] = task
             
             continuation.onTermination = { _ in
-                Task { @MainActor in
+                DispatchQueue.main.async {
                     task.cancel()
                     self.subscriptions.removeValue(forKey: subscriptionKey)
                 }
@@ -373,7 +373,7 @@ class ConvexClient: ObservableObject {
     // MARK: - Configuration Loading
     
     /// Load Convex URL from environment configuration
-    private func loadConvexURL() -> String {
+    private static func loadConvexURL() -> String {
         // Try to load from .env.local file
         if let envPath = Bundle.main.path(forResource: ".env", ofType: "local"),
            let envData = try? String(contentsOfFile: envPath) {
