@@ -292,15 +292,11 @@ class AppState: ObservableObject {
         
         // Set up subscription for game state
         Task {
-            do {
-                // Subscribe to game state changes
-                for await gameState in try await convexClient.subscribeToGameState(roomId: room.id) {
-                    await MainActor.run {
-                        self.updateGameState(gameState)
-                    }
+            // Subscribe to game state changes
+            for await gameState in await convexClient.subscribeToGameState(roomId: room.id) {
+                await MainActor.run {
+                    self.updateGameState(gameState)
                 }
-            } catch {
-                showError("Failed to subscribe to game state: \(error.localizedDescription)")
             }
         }
         

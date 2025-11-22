@@ -121,9 +121,9 @@ struct LobbyView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .textCase(.uppercase)
                     .keyboardType(.alphabet)
-                    .onChange(of: roomCode) { newValue in
+                    .onChange(of: roomCode) {
                         // Limit to 6 characters and uppercase
-                        roomCode = String(newValue.prefix(6)).uppercased()
+                        roomCode = String(roomCode.prefix(6)).uppercased()
                     }
             }
             
@@ -336,7 +336,11 @@ struct LobbyView: View {
     
     private func createPlayer() {
         Task {
-            await appState.createOrGetPlayer(name: playerName)
+            do {
+                try await appState.createOrGetPlayer(name: playerName)
+            } catch {
+                print("Failed to create player: \(error)")
+            }
         }
     }
     

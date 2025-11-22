@@ -227,11 +227,7 @@ struct GameView: View {
                     .font(.title)
                     .fontWeight(.bold)
                 
-                if let taggableCount = appState.taggablePlayers.count {
-                    Text("\(taggableCount) players in range")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                }
+                Text("\(appState.taggablePlayers.count) players in range")
             }
             .frame(maxWidth: .infinity)
             .padding(.vertical, 20)

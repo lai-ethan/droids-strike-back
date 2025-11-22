@@ -376,7 +376,7 @@ class ConvexClient: ObservableObject {
     private static func loadConvexURL() -> String {
         // Try to load from .env.local file
         if let envPath = Bundle.main.path(forResource: ".env", ofType: "local"),
-           let envData = try? String(contentsOfFile: envPath) {
+           let envData = try? String(contentsOfFile: envPath, encoding: .utf8) {
             let lines = envData.split(separator: "\n")
             for line in lines {
                 let parts = line.split(separator: "=", maxSplits: 1)
