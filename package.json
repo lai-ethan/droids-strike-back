@@ -1,0 +1,21 @@
+{
+  "name": "omi-arena-backend",
+  "version": "1.0.0",
+  "description": "Convex backend for OMI Arena - Real-time multiplayer tag game",
+  "scripts": {
+    "dev": "convex dev --typecheck=disable",
+    "deploy": "convex deploy --typecheck=disable",
+    "codegen": "npx convex codegen --typecheck=disable",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "convex": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  },
+  "keywords": ["convex", "real-time", "multiplayer", "game", "ble", "omi"],
+  "author": "Hackathon Team",
+  "license": "MIT"
+}
