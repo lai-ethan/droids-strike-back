@@ -10,8 +10,6 @@ import SwiftUI
 @main
 struct OMIArenaApp: App {
     var body: some Scene {
-        WindowGroup {
-            ContentView()
         }
     }
 }
