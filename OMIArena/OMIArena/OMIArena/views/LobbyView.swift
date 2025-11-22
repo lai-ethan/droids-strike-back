@@ -16,52 +16,27 @@ struct LobbyView: View {
     @State private var showDeviceScanner: Bool = false
     
     var body: some View {
-        // Debug: Test basic rendering
-        VStack {
-            Text("LOBBY VIEW DEBUG")
-                .font(.largeTitle)
-                .foregroundColor(.purple)
-                .padding()
-            
-            Text("Current Player: \(appState.currentPlayer?.name ?? "NONE")")
-                .foregroundColor(.blue)
-            
-            Text("Current Room: \(appState.currentRoom?.name ?? "NONE")")
-                .foregroundColor(.green)
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color(.systemBackground))
-        
-        /*
         NavigationView {
             VStack(spacing: 20) {
-                // Header
-                headerView
-                
-                // Player setup
+                // Debug: Test conditional logic
                 if appState.currentPlayer == nil {
-                    playerSetupView
+                    Text("SHOWING PLAYER SETUP")
+                        .font(.largeTitle)
+                        .foregroundColor(.red)
+                        .padding()
                 } else {
-                    // Room management
-                    if appState.currentRoom == nil {
-                        roomJoinCreateView
-                    } else {
-                        currentRoomView
-                    }
+                    Text("PLAYER EXISTS - SHOW ROOM VIEW")
+                        .font(.largeTitle)
+                        .foregroundColor(.blue)
+                        .padding()
                 }
                 
-                Spacer()
-                
-                // Debug button
-                debugButton
+                Text("Current Player: \(appState.currentPlayer?.name ?? "NONE")")
+                    .foregroundColor(.green)
             }
             .padding()
             .navigationTitle("OMI Arena")
-            .sheet(isPresented: $showDeviceScanner) {
-                DeviceScannerView()
-            }
         }
-        */
     }
     
     // MARK: - Header View
