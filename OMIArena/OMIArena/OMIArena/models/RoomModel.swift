@@ -314,7 +314,7 @@ extension RoomModel {
 
 /// Helper function to generate room codes (matches backend logic)
 func generateRoomCode() -> String {
-    let chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+    let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
     var code = ""
     for _ in 0..<6 {
         if let randomChar = chars.randomElement() {

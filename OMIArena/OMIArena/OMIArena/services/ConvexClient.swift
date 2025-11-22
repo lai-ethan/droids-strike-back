@@ -299,8 +299,10 @@ class ConvexClient: ObservableObject {
             
             // Clean up subscription when stream is cancelled
             continuation.onTermination = { _ in
-                task.cancel()
-                self.subscriptions.removeValue(forKey: subscriptionKey)
+                Task { @MainActor in
+                    task.cancel()
+                    self.subscriptions.removeValue(forKey: subscriptionKey)
+                }
             }
         }
     }
@@ -330,8 +332,10 @@ class ConvexClient: ObservableObject {
             subscriptions[subscriptionKey] = task
             
             continuation.onTermination = { _ in
-                task.cancel()
-                self.subscriptions.removeValue(forKey: subscriptionKey)
+                Task { @MainActor in
+                    task.cancel()
+                    self.subscriptions.removeValue(forKey: subscriptionKey)
+                }
             }
         }
     }

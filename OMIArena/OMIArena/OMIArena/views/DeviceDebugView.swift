@@ -397,11 +397,11 @@ struct DeviceDebugView: View {
         switch rssi {
         case -50...0:
             return "Excellent"
-        case -60..< -50:
+        case -60 ..< -50:
             return "Good"
-        case -70..< -60:
+        case -70 ..< -60:
             return "Fair"
-        case -80..< -70:
+        case -80 ..< -70:
             return "Poor"
         default:
             return "Very Poor"
