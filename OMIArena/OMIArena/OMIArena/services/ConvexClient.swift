@@ -387,7 +387,8 @@ class ConvexClient: ObservableObject {
         }
         
         // Fallback to default development URL
-        return "http://localhost:3210"
+        // Use host machine IP for iOS simulator compatibility
+        return "http://127.0.0.1:3210"
     }
     
     // MARK: - Error Handling
