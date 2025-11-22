@@ -43,6 +43,25 @@ struct ContentView: View {
     @EnvironmentObject var appState: AppState
     
     var body: some View {
+        // Debug: Always show this to verify rendering
+        VStack {
+            Text("OMI Arena - Debug View")
+                .font(.largeTitle)
+                .foregroundColor(.red)
+            
+            Text("Loading: \(appState.isLoading ? "YES" : "NO")")
+                .foregroundColor(.blue)
+            
+            Text("Current Player: \(appState.currentPlayer?.name ?? "NONE")")
+                .foregroundColor(.green)
+            
+            Text("Current Room: \(appState.currentRoom?.name ?? "NONE")")
+                .foregroundColor(.orange)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color(.systemBackground))
+        
+        /*
         Group {
             // Show loading screen while initializing
             if appState.isLoading {
@@ -64,6 +83,7 @@ struct ContentView: View {
         } message: {
             Text(appState.errorMessage)
         }
+        */
     }
 }
 
